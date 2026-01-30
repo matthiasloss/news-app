@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#c00" id="theme-color">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="NewsApp">
+    <title>NewsApp</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+</head>
+<body>
+    <header>
+        <h1>NEWS</h1>
+        <div class="header-actions">
+            <button id="search-toggle" aria-label="Suchen">🔍</button>
+            <button id="refresh-btn" aria-label="Aktualisieren">↻</button>
+            <button id="settings-btn" aria-label="Einstellungen">⚙️</button>
+        </div>
+    </header>
+
+    <div id="search-bar" class="search-bar hidden">
+        <input type="text" id="search-input" placeholder="Nachrichten durchsuchen...">
+        <button id="search-clear">✕</button>
+    </div>
+
+    <nav class="categories">
+        <button class="cat-btn active" data-category="all">Alle</button>
+        <button class="cat-btn" data-category="politik">Politik</button>
+        <button class="cat-btn" data-category="wirtschaft">Wirtschaft</button>
+        <button class="cat-btn" data-category="sport">Sport</button>
+        <button class="cat-btn" data-category="tech">Tech</button>
+        <button class="cat-btn" data-category="wissen">Wissen</button>
+        <button class="cat-btn" data-category="unterhaltung">Kultur</button>
+        <button class="cat-btn" data-category="rezepte">🍝 Rezepte</button>
+        <button class="cat-btn" data-category="italien">🇮🇹 Italien</button>
+        <button class="cat-btn" data-category="portugal">🇵🇹 Portugal</button>
+        <button class="cat-btn" data-category="bookmarks">⭐ Gemerkt</button>
+    </nav>
+
+    <main id="news-feed">
+        <div class="loading">Lade Nachrichten...</div>
+    </main>
+
+    <!-- Article Modal -->
+    <div id="article-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn">&times;</button>
+                <button id="bookmark-btn" class="bookmark-btn">☆</button>
+                <button id="share-btn" class="share-btn">↗</button>
+            </div>
+            <article id="article-detail"></article>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content settings-content">
+            <div class="modal-header">
+                <h2>Einstellungen</h2>
+                <button class="close-btn close-settings">&times;</button>
+            </div>
+            <div class="settings-list">
+                <div class="setting-item">
+                    <span>Dark Mode</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="dark-mode-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>Kompakte Ansicht</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="compact-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>Auto-Refresh (5 Min)</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="auto-refresh-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>Nur mit Bild anzeigen</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="images-only-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-section">
+                    <h3>Quellen verwalten</h3>
+                    <div id="sources-list"></div>
+                </div>
+                <div class="setting-section">
+                    <h3>Über diese App</h3>
+                    <p class="about-text">NewsApp v1.0<br>Eine PWA für aktuelle Nachrichten</p>
+                </div>
+                <button id="clear-cache-btn" class="danger-btn">Cache leeren</button>
+                <button id="clear-bookmarks-btn" class="danger-btn">Alle Lesezeichen löschen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-view="feed">
+            <span class="nav-icon">📰</span>
+            <span class="nav-label">Feed</span>
+        </button>
+        <button class="nav-btn" data-view="bookmarks">
+            <span class="nav-icon">⭐</span>
+            <span class="nav-label">Gemerkt</span>
+        </button>
+        <button class="nav-btn" data-view="trending">
+            <span class="nav-icon">🔥</span>
+            <span class="nav-label">Trending</span>
+        </button>
+    </nav>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
